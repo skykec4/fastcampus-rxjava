@@ -35,7 +35,9 @@ class GithubReposAdapter : RecyclerView.Adapter<GithubReposAdapter.RepoViewHolde
             with(itemView) {
                 repoName.text = repo.name
                 repoDescription.text = repo.description
-                onClick { }
+                onClick {
+
+                }
             }
         }
     }
