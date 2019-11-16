@@ -14,10 +14,13 @@ buildscript {
     dependencies {
         classpath 'com.android.tools.build:gradle:3.5.2'
 <<<<<<< HEAD
+<<<<<<< HEAD
 >>>>>>> fifth_week
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-android-extensions:$kotlinVersion"
 =======
+=======
+>>>>>>> first_week_rxjava
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 >>>>>>> first_week
         // NOTE: Do not place your application dependencies here; they belong
