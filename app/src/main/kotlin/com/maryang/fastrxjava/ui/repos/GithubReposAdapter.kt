@@ -37,11 +37,17 @@ class GithubReposAdapter : RecyclerView.Adapter<GithubReposAdapter.RepoViewHolde
             with(itemView) {
                 repoName.text = repo.name
                 repoDescription.text = repo.description
+<<<<<<< HEAD
+                onClick {
+
+                }
+=======
                 repoStar.imageResource =
                     if (repo.star) R.drawable.baseline_star_24
                     else R.drawable.baseline_star_border_24
                 onClick { GithubRepoActivity.start(context, repo) }
                 repoStar.onClick { }
+>>>>>>> 005521b79e23d5a21046d42ebd00cbec81c9cc69
             }
         }
     }
