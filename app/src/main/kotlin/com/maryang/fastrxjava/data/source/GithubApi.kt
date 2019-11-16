@@ -1,20 +1,22 @@
 package com.maryang.fastrxjava.data.source
 
-import com.maryang.fastrxjava.entity.GithubRepo
-import com.maryang.fastrxjava.entity.User
-import retrofit2.Call
+import com.google.gson.JsonElement
+import io.reactivex.Completable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface GithubApi {
 
-    @GET("users/{userName}/repos")
-    fun getRepos(
-        @Path("userName") userName: String = "googlesamples"
-    ): Call<List<GithubRepo>>
+    @GET("search/repositories")
+    fun searchRepos(
+        @Query("q") search: String
+    ): Single<JsonElement>
 
-    @GET("users/{userName}")
-    fun getUser(
-        @Path("userName") userName: String = "octocat"
-    ): Call<User>
+    @GET("user/starred/{owner}/{repo}")
+    fun checkStar(
+        @Path("owner") owner: String,
+        @Path("repo") repo: String
+    ): Completable
 }

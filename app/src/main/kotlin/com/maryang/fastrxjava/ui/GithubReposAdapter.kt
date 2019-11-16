@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.maryang.fastrxjava.R
 import com.maryang.fastrxjava.entity.GithubRepo
 import kotlinx.android.synthetic.main.item_github_repo.view.*
+import org.jetbrains.anko.imageResource
 import org.jetbrains.anko.sdk21.listeners.onClick
 
 class GithubReposAdapter : RecyclerView.Adapter<GithubReposAdapter.RepoViewHolder>() {
@@ -35,9 +36,17 @@ class GithubReposAdapter : RecyclerView.Adapter<GithubReposAdapter.RepoViewHolde
             with(itemView) {
                 repoName.text = repo.name
                 repoDescription.text = repo.description
+<<<<<<< HEAD
                 onClick {
 
                 }
+=======
+                repoStar.imageResource =
+                    if (repo.star) R.drawable.baseline_star_24
+                    else R.drawable.baseline_star_border_24
+                onClick { }
+                repoStar.onClick { }
+>>>>>>> 005521b79e23d5a21046d42ebd00cbec81c9cc69
             }
         }
     }
