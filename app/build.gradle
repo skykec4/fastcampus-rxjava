@@ -69,10 +69,15 @@ dependencies {
     implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
 
     testImplementation 'junit:junit:4.12'
+<<<<<<< HEAD
     testImplementation "org.mockito:mockito-core:3.0.0"
     androidTestImplementation "org.mockito:mockito-core:3.0.0"
+=======
+    testImplementation 'org.mockito:mockito-core:2.27.0'
+    testImplementation 'org.mockito:mockito-inline:2.27.0'
+    testImplementation 'androidx.arch.core:core-testing:2.1.0'
+>>>>>>> ea9a77383e8dec1baf83cf1e113cfb71e7fc46fb
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }
 
 androidExtensions {

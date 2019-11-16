@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.maryang.fastrxjava.base.BaseViewModelActivity
 import com.maryang.fastrxjava.entity.GithubRepo
 import com.maryang.fastrxjava.event.DataObserver
+<<<<<<< HEAD
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.rxkotlin.plusAssign
 import kotlinx.android.synthetic.main.activity_github_repos.*
@@ -17,6 +18,15 @@ class GithubReposActivity : BaseViewModelActivity() {
 
     override val viewModel: GithubReposViewModel by lazy {
         GithubReposViewModel()
+=======
+import kotlinx.android.synthetic.main.activity_github_repos.*
+
+
+class GithubReposActivity : BaseActivity(), GithubReposPresenter.View {
+
+    private val presenter: GithubReposPresenter by lazy {
+        GithubReposPresenter(this)
+>>>>>>> ea9a77383e8dec1baf83cf1e113cfb71e7fc46fb
     }
     private val adapter: GithubReposAdapter by lazy {
         GithubReposAdapter()
@@ -29,12 +39,12 @@ class GithubReposActivity : BaseViewModelActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = this.adapter
 
-        refreshLayout.setOnRefreshListener { viewModel.searchGithubRepos() }
+        refreshLayout.setOnRefreshListener { presenter.searchGithubRepos() }
 
         searchText.addTextChangedListener(object : TextWatcher {
 
             override fun afterTextChanged(text: Editable?) {
-                viewModel.searchGithubRepos(text.toString())
+                presenter.searchGithubRepos(text.toString())
             }
 
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
@@ -43,6 +53,7 @@ class GithubReposActivity : BaseViewModelActivity() {
             override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
         })
+<<<<<<< HEAD
         subscribeSearch()
         subscribeDataObserver()
     }
@@ -58,14 +69,10 @@ class GithubReposActivity : BaseViewModelActivity() {
                     hideLoading()
                     adapter.items = t
                 }
+=======
+>>>>>>> ea9a77383e8dec1baf83cf1e113cfb71e7fc46fb
 
-                override fun onComplete() {
-                }
-
-                override fun onError(e: Throwable) {
-                    hideLoading()
-                }
-            })
+        subscribeDataObserver()
     }
 
     private fun subscribeDataObserver() {
@@ -81,12 +88,16 @@ class GithubReposActivity : BaseViewModelActivity() {
             }
     }
 
-    private fun showLoading() {
+    override fun showLoading() {
         loading.visibility = View.VISIBLE
     }
 
-    private fun hideLoading() {
+    override fun hideLoading() {
         loading.visibility = View.GONE
         refreshLayout.isRefreshing = false
+    }
+
+    override fun showRepos(repos: List<GithubRepo>) {
+        adapter.items = repos
     }
 }
